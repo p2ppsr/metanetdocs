@@ -1,0 +1,51 @@
+{
+  "name": "Metanet Docs",
+  "short_name": "Metanet Docs",
+  "description": "Create and edit encrypted docs synced on the blockchain.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/480f43d6-b226-4a85-9e7a-4ce92d1e43ce.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/480f43d6-b226-4a85-9e7a-4ce92d1e43ce.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "babbage": {
+    "groupPermissions": {
+      "basketAccess": [
+        {
+          "basket": "notes",
+          "description": "For displaying and updating your docs."
+        }
+      ],
+      "protocolPermissions": [
+        {
+          "protocolID": [2, "notes"],
+          "counterparty": "self",
+          "description": "For encrypting docs"
+        },
+        {
+          "protocolID": [2, "identity key retrieval"],
+          "counterparty": "self",
+          "description": "For caching notes per profile."
+        }
+      ],
+      "spendingAuthorization": {
+        "amount": 10000000,
+        "duration": 0,
+        "description": "For creating and updating docs without popups."
+      }
+    }
+  }
+}

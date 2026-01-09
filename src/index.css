@@ -1,0 +1,422 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    /* Google Docs-inspired light theme */
+    --background: 0 0% 95%;  /* Lighter gray for doc background */
+    --foreground: 0 0% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 13%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 217 91% 95%;
+    --accent-foreground: 217 91% 60%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 13%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 13%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    /* Google Docs-inspired dark theme */
+    --background: 0 0% 12%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 217 91% 60%;
+
+    --sidebar-background: 0 0% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 20%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    /* Use vh for mobile keyboard compatibility */
+    height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height when available */
+  }
+  
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    /* Use flexible height for keyboard adjustments */
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    /* Use flexible height that adapts to viewport changes */
+    min-height: 100vh;
+    min-height: 100dvh;
+    overscroll-behavior: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Mobile keyboard viewport adjustments */
+  @supports (height: 100dvh) {
+    .mobile-keyboard-container {
+      height: 100dvh;
+    }
+  }
+
+  /* Ensure text inputs are visible when keyboard appears */
+  .mobile-input-container {
+    position: relative;
+  }
+
+  /* Improve touch interactions on mobile */
+  @media (hover: none) and (pointer: coarse) {
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* Allow content to be flexible on mobile */
+    body {
+      height: auto;
+      min-height: 100vh;
+      min-height: 100dvh;
+      /* Prevent iOS Safari bounce effect */
+      overscroll-behavior-y: none;
+    }
+    
+    #root {
+      height: auto;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    /* Better touch targets on mobile */
+    input, textarea, button, select {
+      font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+
+    /* Smooth scrolling on mobile */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+    }
+  }
+}
+
+/* TipTap Rich Text Editor Styles */
+.rich-text-editor-new {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.rich-text-editor-new .editor-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.rich-text-editor-new .ProseMirror {
+  outline: none;
+  padding: 16px;
+  height: 100%;
+  min-height: 300px;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.rich-text-editor-new .ProseMirror:focus {
+  outline: none;
+}
+
+.rich-text-editor-new .ProseMirror p {
+  margin: 0 0 1em 0;
+}
+
+.rich-text-editor-new .ProseMirror h1 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+}
+
+.rich-text-editor-new .ProseMirror h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+}
+
+.rich-text-editor-new .ProseMirror h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+}
+
+/* Fixed list styling */
+.rich-text-editor-new .ProseMirror ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 1em 0;
+}
+
+.rich-text-editor-new .ProseMirror ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 1em 0;
+}
+
+.rich-text-editor-new .ProseMirror li {
+  margin: 0.25em 0;
+  display: list-item;
+}
+
+.rich-text-editor-new .ProseMirror li p {
+  margin: 0;
+  display: inline;
+}
+
+.rich-text-editor-new .ProseMirror blockquote {
+  border-left: 4px solid hsl(var(--border));
+  padding-left: 1rem;
+  margin: 1em 0;
+  font-style: italic;
+}
+
+.rich-text-editor-new .ProseMirror code {
+  background: hsl(var(--muted));
+  padding: 0.25rem 0.375rem;
+  border-radius: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.rich-text-editor-new .ProseMirror pre {
+  background: hsl(var(--muted));
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.rich-text-editor-new .ProseMirror pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Font family classes for editor */
+.rich-text-editor-new .ProseMirror.font-sans {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.rich-text-editor-new .ProseMirror.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.rich-text-editor-new .ProseMirror.font-crimson {
+  font-family: 'Crimson Text', Georgia, serif;
+}
+
+.rich-text-editor-new .ProseMirror.font-merriweather {
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+.rich-text-editor-new .ProseMirror.font-mono {
+  font-family: 'Source Code Pro', Menlo, monospace;
+}
+
+.dark .rich-text-editor-new .ProseMirror {
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+}
+
+/* Enhanced dark mode support */
+.dark .rich-text-editor-new .toolbar {
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+
+/* Smooth transitions for theme switching - but not for interactive elements */
+*:not(button):not(a):not([role="button"]) {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure images and icons work in both modes */
+.dark img {
+  filter: brightness(0.9);
+}
+
+/* Ensure dropdowns and popovers have proper backgrounds and z-index */
+[role="menu"], [role="dialog"], [data-radix-popper-content-wrapper] {
+  z-index: 50 !important;
+}
+
+[data-radix-popper-content-wrapper] > * {
+  background: hsl(var(--popover)) !important;
+  border: 1px solid hsl(var(--border));
+}
+
+.dark [data-radix-popper-content-wrapper] > * {
+  background: hsl(var(--popover)) !important;
+}
+
+/* Rich text content in viewer - enhanced dark mode */
+.rich-text-content {
+  color: hsl(var(--foreground));
+}
+
+.dark .rich-text-content {
+  color: hsl(var(--foreground));
+}
+
+.rich-text-content h1 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+  color: hsl(var(--foreground));
+}
+
+.rich-text-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+  color: hsl(var(--foreground));
+}
+
+.rich-text-content h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+  color: hsl(var(--foreground));
+}
+
+.rich-text-content p {
+  margin: 0 0 1em 0;
+  color: hsl(var(--foreground));
+}
+
+/* Fixed list rendering in viewer */
+.rich-text-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 1em 0;
+  color: hsl(var(--foreground));
+}
+
+.rich-text-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 1em 0;
+  color: hsl(var(--foreground));
+}
+
+.rich-text-content li {
+  margin: 0.25em 0;
+  display: list-item;
+  color: hsl(var(--foreground));
+}
+
+.rich-text-content blockquote {
+  border-left: 4px solid hsl(var(--border));
+  padding-left: 1rem;
+  margin: 1em 0;
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+}
+
+.rich-text-content code {
+  background: hsl(var(--muted));
+  padding: 0.25rem 0.375rem;
+  border-radius: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  color: hsl(var(--foreground));
+}
+
+.rich-text-content pre {
+  background: hsl(var(--muted));
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.rich-text-content pre code {
+  background: none;
+  padding: 0;
+  color: hsl(var(--foreground));
+}
