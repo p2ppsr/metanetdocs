@@ -1,8 +1,8 @@
 # Metanet Docs
 
-A modern, Google Docs-style document editor with blockchain-powered storage on the BSV blockchain. Documents are encrypted and stored using the Metanet protocol, ensuring true data ownership and portability.
+A modern, secure, document editor with blockchain-powered storage on the BSV blockchain. Documents are encrypted and stored using the Metanet protocol, ensuring true data ownership and portability.
 
-## 🌟 Features
+## Features
 
 - **Rich Text Editor** - Full WYSIWYG editing with TipTap
   - Multiple heading levels (H1-H3)
@@ -33,7 +33,7 @@ A modern, Google Docs-style document editor with blockchain-powered storage on t
   - Responsive design (mobile & desktop)
   - Document outline sidebar
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -53,7 +53,7 @@ npm run dev
 npm run build
 ```
 
-## 🔗 Data Portability & Protocol Specification
+## Data Portability & Protocol Specification
 
 Metanet Docs uses the [@bsv/sdk](https://github.com/bitcoin-sv/ts-sdk) `LocalKVStore` for storing documents. This ensures your data is truly portable and can be accessed by any compatible application.
 
@@ -110,7 +110,7 @@ for (const path of paths) {
 }
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 ### Technology Stack
 
@@ -163,14 +163,14 @@ src/
 | `RichTextEditor` | TipTap-based WYSIWYG editor with toolbar |
 | `useAutoSave` | Hook for debounced auto-saving with status tracking |
 
-## 🔐 Security & Privacy
+## Security & Privacy
 
 - **End-to-end encryption**: Documents are encrypted before storing on-chain
 - **Self-sovereign**: Only you (with your wallet keys) can access your documents
 - **No central server**: Data lives on the BSV blockchain, not on any company's servers
 - **Portable**: Your data moves with you - export or access via any compatible app
 
-## 🛣️ Roadmap
+## Roadmap
 
 - [ ] **Folders & Organization** - Organize documents into folders
 - [ ] **Templates** - Pre-made document templates (meeting notes, project plans)
@@ -180,11 +180,11 @@ src/
 - [ ] **Tables** - Insert and edit tables
 - [ ] **Images** - Embed images in documents
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE](LICENSE) for details.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
