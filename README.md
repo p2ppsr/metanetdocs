@@ -2,6 +2,8 @@
 
 A modern, secure, document editor with blockchain-powered storage on the BSV blockchain. Documents are encrypted and stored using the Metanet protocol, ensuring true data ownership and portability.
 
+Try it out today -> [Metanet Docs](https://docs.metanet.app)
+
 ## Features
 
 - **Rich Text Editor** - Full WYSIWYG editing with TipTap
